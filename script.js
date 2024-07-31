@@ -18,7 +18,12 @@ const kilometerPrice = 0.21;
 
 // DATA COLLECTION PHASE
 // 3. Ask the user for the number of kilometers they want to travel
+const numKilometers = parseInt(prompt('How many kilometers do you have to travel on your journey?'));
+console.log(numKilometers, typeof numKilometers);
 
+// 4. Ask the user for his or her age
+const userAge = parseInt(prompt('How old are you?'));
+console.log(userAge, typeof userAge);
 
 // PROCESSING PHASE
 
