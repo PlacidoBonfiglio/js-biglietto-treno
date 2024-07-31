@@ -40,19 +40,21 @@ if (userAge <= 18) {
 }
 
 // Discount 20%
-const firstDiscount = prompt(totalPrice * 20 / 100);
+const firstDiscount = totalPrice * 20 / 100;
 console.log(firstDiscount);
 
-const youngDiscount = totalPrice - firstDiscount;
+let youngDiscount = totalPrice - firstDiscount;
 youngDiscount = youngDiscount.toFixed(2);
 console.log(youngDiscount);
 
 // Discount 40%
-const secondDiscount = prompt(totalPrice * 40 / 100);
+const secondDiscount = totalPrice * 40 / 100;
 console.log(secondDiscount);
 
-const seniorDiscount = totalPrice - secondDiscount;
+let seniorDiscount = totalPrice - secondDiscount;
 seniorDiscount = seniorDiscount.toFixed(2);
-console.log(youngDiscount);
+console.log(seniorDiscount);
 
 // OUTPUT PHASE
+// 7. Insert the ticket price into the DOM
+// resultElement.innerHTML = `The cost of your train ticket is priced at <strong>${ }</strong> €`;
