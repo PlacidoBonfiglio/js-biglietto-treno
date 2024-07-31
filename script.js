@@ -39,18 +39,18 @@ if (userAge <= 18) {
     console.log('No Discount applied')
 }
 
+// Discount 20%
 const firstDiscount = prompt(totalPrice * 20 / 100);
 console.log(firstDiscount);
 
-const secondDiscount = prompt(totalPrice * 40 / 100);
-console.log(secondDiscount);
-
-// Discount 20%
 const youngDiscount = totalPrice - firstDiscount;
 youngDiscount = youngDiscount.toFixed(2);
 console.log(youngDiscount);
 
 // Discount 40%
+const secondDiscount = prompt(totalPrice * 40 / 100);
+console.log(secondDiscount);
+
 const seniorDiscount = totalPrice - secondDiscount;
 seniorDiscount = seniorDiscount.toFixed(2);
 console.log(youngDiscount);
