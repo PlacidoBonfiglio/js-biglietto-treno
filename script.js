@@ -26,5 +26,8 @@ const userAge = parseInt(prompt('How old are you?'));
 console.log(userAge, typeof userAge);
 
 // PROCESSING PHASE
+// 5. Calculate the total price of the trip
+const mol = kilometerPrice * numKilometers;
+console.log(mol);
 
 // OUTPUT PHASE
