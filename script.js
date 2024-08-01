@@ -11,48 +11,50 @@ console.log('JS OK')
 // PREPARATORY PHASE
 // 1. Retrieve the element of my interest from the DOM
 const resultElement = document.getElementById('ticket');
-console.log(resultElement);
 
-// 2. Prepare the variable with the cost of the ticket based on the kilometers driven
+// 2. Prepare the variable with the cost of the ticket based on the kilometers driven and price message
 const kilometerPrice = 0.21;
+
+const priceMessage = 'Your ticket price is €'
 
 // DATA COLLECTION PHASE
 // 3. Ask the user for the number of kilometers they want to travel
-const numKilometers = parseInt(prompt('How many kilometers do you have to travel on your journey?'));
+const numKilometers = parseInt(prompt('How many kilometers do you have to travel on your journey?', 200));
 console.log(numKilometers, typeof numKilometers);
 
 // 4. Ask the user for his or her age
-const userAge = parseInt(prompt('How old are you?'));
+const userAge = parseInt(prompt('How old are you?', 66));
 console.log(userAge, typeof userAge);
 
 // PROCESSING PHASE
 // 5. Calculate the total price of the trip
-const totalPrice = kilometerPrice * numKilometers;
-console.log('totalPrice', totalPrice);
+const basePrice = kilometerPrice * numKilometers;
+let finalPrice = basePrice;
 
 // 6. Apply discount based on age
-if (userAge <= 18) {
-    console.log('The discount that has been applied to the cost of your ticket is 20%.')
-} else if (userAge >= 65) {
-    console.log('The discount that has been applied to the cost of your ticket is 40%.')
-} else {
-    console.log('No Discount applied')
+let discount = null;
+
+if (userAge < 18) discount = 20;
+else if (userAge >= 65) discount = 40;
+
+if (discount) {
+    const discountElement = document.getElementById('discount-message');
+
+    // Percentage discount message
+    const  discountMessage = `You recived a discount of <strong>${discount}%</strong>`;
+
+    //print the discount message 
+    discountElement.innerHTML = discountMessage;
+
+    // Calculate discount
+    const discountAmount = (finalPrice / 100) * discount;
+
+    // Apply Discount
+    finalPrice -= discountAmount;
 }
-
-// Discount 20%
-const firstDiscount = totalPrice * 20 / 100;
-
-let youngDiscount = totalPrice - firstDiscount;
-youngDiscount = youngDiscount.toFixed(2);
-console.log('youngDiscount', youngDiscount);
-
-// Discount 40%
-const secondDiscount = totalPrice * 40 / 100;
-
-let seniorDiscount = totalPrice - secondDiscount;
-seniorDiscount = seniorDiscount.toFixed(2);
-console.log('seniorDiscount', seniorDiscount);
 
 // OUTPUT PHASE
 // 7. Insert the ticket price into the DOM
-// resultElement.innerHTML = `The cost of your train ticket is priced at <strong>${ }</strong> €`;
+ resultElement.innerText = priceMessage + finalPrice.toFixed(2);
+
+ if (discount) resultElement.innerHTML += ` <del>${basePrice.toFixed(2)}</del>`;
